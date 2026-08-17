@@ -1,0 +1,33 @@
+[build-system]
+# Use setuptools so this small research prototype has a standard Python package layout.
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "react-color-agent"
+version = "0.1.0"
+description = "A minimal ReAct director for recoverable colour experiment loops"
+requires-python = ">=3.11"
+dependencies = ["colour-science>=0.4.7", "numpy>=1.26", "openpyxl>=3.1", "pydantic>=2.0"]
+
+[project.optional-dependencies]
+# Keep the real LLM client optional so unit tests require no API key or network access.
+openai = ["openai>=1.0"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+color-agent = "react_color_agent.cli:main"
+
+[tool.setuptools.packages.find]
+# Package tool code and Scientific Skill resources from the shared src root.
+where = ["src"]
+
+[tool.setuptools.package-data]
+# Keep human-authored Skill instructions and XLSX constraints available after installation.
+skills = ["**/*.md"]
+constraints = ["*.md", "*.xlsx"]
+
+[tool.pytest.ini_options]
+# Let pytest import the in-tree package without requiring an editable installation.
+pythonpath = ["src"]
+testpaths = ["tests"]
