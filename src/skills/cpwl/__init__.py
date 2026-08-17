@@ -1,0 +1,1 @@
+"""CPWL scientific Skill resources."""

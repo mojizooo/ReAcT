@@ -1,0 +1,18 @@
+# Python bytecode is regenerated locally and must not be committed.
+__pycache__/
+*.py[cod]
+
+# Test and build output are not source artifacts.
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Local credentials and scientific run artifacts must remain outside version control.
+.env
+runs/
+
+# Local documentation, presentation artifacts, and test suites are not synced.
+docs/
+presentations/
+tests/
